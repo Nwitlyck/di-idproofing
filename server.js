@@ -50,7 +50,7 @@ app.get('/callback', async (req, res) => {
 
             body {
               font-family: 'Roboto', sans-serif;
-              background-image: url('images/background.jpg');
+              background-image: url('images/flag.jpg');
               background-size: cover;
               background-position: center;
               background-attachment: fixed;
@@ -213,7 +213,7 @@ app.get('/', (req, res) => {
 
           body {
             font-family: 'Roboto', sans-serif;
-            background-image: url('images/background.jpg');
+            background-image: url('images/flag.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
