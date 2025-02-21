@@ -196,7 +196,12 @@ app.get('/callback', async (req, res) => {
 app.get('/', (req, res) => {
   const descriptions = {
     step1: "To complete the identity verification process, click 'Submit'.",
-    step2: "This option will verify your identity by cross-referencing your driver's license with DMV records.",
+    step2: "This verifies an identity by matching the Driver's License Number and Date of Birth against the American Association of Motor Vehicle Administrators (AAMVA) national database.",
+    step3: "What's happening in the background?",
+    step4: "1.	Selfie Liveness - Confirming the user is real and present",
+    step5: "2.	Document Authentication - Confirming the driver's license is real and has not been altered in any way",
+    step6: "3.	Selfie Matching - Confirming the selfie that was taken matches the photo on the driver's license.",
+    step7: "4.	System of Record Check - Confirming the driver's license number and date of birth on the driver's license match what is in the AAMVA database"
   };
 
   res.send(`
@@ -271,6 +276,11 @@ app.get('/', (req, res) => {
           <h1>Welcome to the NCDIT Identity Proofing Demonstration</h1>
           <p>${descriptions.step1}</p>
           <p>${descriptions.step2}</p>
+          <p><b>${descriptions.step3}</b></p>
+          <p>${descriptions.step4}</p>
+          <p>${descriptions.step5}</p>
+          <p>${descriptions.step6}</p>
+          <p>${descriptions.step7}</p>
           
           <a href="/login">
             <button type="submit" class="btn" id="submitBtn">Submit</button>
