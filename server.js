@@ -97,7 +97,7 @@ app.get('/callback', async (req, res) => {
       </html>
     `);
   } catch (error) {
-    console.error('Error exchanging authorization code for token:', error);
+    console.error('Error exchanging authorization code for token:', error.response?.data);
     
     if (error.response?.data?.error_description?.includes("AAMVA")) {
       res.send(`
