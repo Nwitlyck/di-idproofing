@@ -98,98 +98,177 @@ app.get('/callback', async (req, res) => {
     `);
   } catch (error) {
     console.error('Error exchanging authorization code for token:', error.response?.data || error.message);
-    res.send(`
-      <html>
-        <head>
+    
+    if (error.response?.data?.error_description?.includes('AAMVA+Failed')) {
+      res.send(`
+        <html>
+          <head>
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-          <title>Callback Demo</title>
-          <style>
-            body {
-              font-family: 'Roboto', sans-serif;
-              background-image: url('images/flag.jpg');
-              background-size: cover;
-              background-position: center;
-              background-attachment: fixed;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100vh;
-              margin: 0;
-              text-align: center;
-              color: #222; 
-            }
+            <title>Error - Felipe Not Found</title>
+            <style>
+              body {
+                font-family: 'Roboto', sans-serif;
+                background-image: url('images/flag.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                text-align: center;
+                color: #222; 
+              }
 
-            .content-container {
-              background-color: rgba(227, 242, 253, 0.9);
-              padding: 40px;
-              border-radius: 12px;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-              width: 100%;
-              max-width: 520px;
-            }
+              .content-container {
+                background-color: rgba(227, 242, 253, 0.9);
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 520px;
+              }
 
-            h1 {
-              font-size: 34px;
-              font-weight: 700;
-              color: #2C3E50;
-              margin-bottom: 25px;
-              font-family: 'Poppins', sans-serif;
-            }
+              h1 {
+                font-size: 34px;
+                font-weight: 700;
+                color: #e74c3c;
+                margin-bottom: 25px;
+                font-family: 'Poppins', sans-serif;
+                text-align: center;
+              }
 
-            p {
-              font-size: 18px;
-              color: #555;
-              margin-bottom: 20px;
-            }
+              p {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 20px;
+              }
 
-            .token-info p {
-              font-size: 18px;
-              color: #333;
-              margin-top: 20px;
-            }
+              .error-icon {
+                font-size: 100px;
+                color: #e74c3c;
+                margin-bottom: 20px;
+              }
 
-            .id-token-container {
-              background-color: #ffffff;
-              padding: 20px;
-              margin-top: 20px;
-              border-radius: 8px;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-              max-width: 500px; 
-              word-wrap: break-word;
-              white-space: pre-wrap;
-              font-family: 'Courier New', Courier, monospace;
-              width: 100%;
-            }
+              .retry-button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+              }
 
-            .btn {
-              padding: 14px 24px;
-              background-color: #0056b3;
-              color: #fff;
-              border: none;
-              border-radius: 8px;
-              font-size: 18px;
-              font-weight: 600;
-              cursor: pointer;
-              transition: background-color 0.3s ease, transform 0.2s;
-            }
+              .retry-button:hover {
+                background-color: #2980b9;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="content-container">
+              <h1>AMMVA was not pass</h1>
+              <p>Please return to the home page.</p>
+              <button class="retry-button" onclick="window.location.reload();">Try Again</button>
+            </div>
+          </body>
+        </html>
+      `);
+    } else {   
+      res.send(`
+        <html>
+          <head>
+              <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+            <title>Callback Demo</title>
+            <style>
+              body {
+                font-family: 'Roboto', sans-serif;
+                background-image: url('images/flag.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                text-align: center;
+                color: #222; 
+              }
 
-            .btn:hover {
-              background-color: #004494;
-              transform: scale(1.05);
-            }
+              .content-container {
+                background-color: rgba(227, 242, 253, 0.9);
+                padding: 40px;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 520px;
+              }
 
-          </style>
-        </head>
-        <body>
-          <div class="content-container">
-            <h1>Something went wrong</h1>
-            <p>The identity proofing process was not completed successfully.</p>
-            <p>Please return to the home page:</p>
-            <a href="/" class="btn">Go to Home</a>
-          </div>
-        </body>
-      </html>
-    `);
+              h1 {
+                font-size: 34px;
+                font-weight: 700;
+                color: #2C3E50;
+                margin-bottom: 25px;
+                font-family: 'Poppins', sans-serif;
+              }
+
+              p {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 20px;
+              }
+
+              .token-info p {
+                font-size: 18px;
+                color: #333;
+                margin-top: 20px;
+              }
+
+              .id-token-container {
+                background-color: #ffffff;
+                padding: 20px;
+                margin-top: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                max-width: 500px; 
+                word-wrap: break-word;
+                white-space: pre-wrap;
+                font-family: 'Courier New', Courier, monospace;
+                width: 100%;
+              }
+
+              .btn {
+                padding: 14px 24px;
+                background-color: #0056b3;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                font-size: 18px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s;
+              }
+
+              .btn:hover {
+                background-color: #004494;
+                transform: scale(1.05);
+              }
+
+            </style>
+          </head>
+          <body>
+            <div class="content-container">
+              <h1>Something went wrong</h1>
+              <p>The identity proofing process was not completed successfully.</p>
+              <p>Please return to the home page:</p>
+              <a href="/" class="btn">Go to Home</a>
+            </div>
+          </body>
+        </html>
+      `);
+    }
   }
 });
 
