@@ -277,10 +277,10 @@ app.get('/', (req, res) => {
     step1: "To complete the identity verification process, click 'Submit'.",
     step2: "This verifies an identity by matching the Driver's License Number and Date of Birth against the American Association of Motor Vehicle Administrators (AAMVA) national database.",
     step3: "What's happening in the background?",
-    step4: "1.	Selfie Liveness - Confirming the user is real and present",
-    step5: "2.	Document Authentication - Confirming the driver's license is real and has not been altered in any way",
-    step6: "3.	Selfie Matching - Confirming the selfie that was taken matches the photo on the driver's license.",
-    step7: "4.	System of Record Check - Confirming the driver's license number and date of birth on the driver's license match what is in the AAMVA database"
+    step4: "&nbsp;&nbsp;&nbsp;1.	Selfie Liveness - Confirming the user is real and present",
+    step5: "&nbsp;&nbsp;&nbsp;2.	Document Authentication - Confirming the driver's license is real and has not been altered in any way",
+    step6: "&nbsp;&nbsp;&nbsp;3.	Selfie Matching - Confirming the selfie that was taken matches the photo on the driver's license.",
+    step7: "&nbsp;&nbsp;&nbsp;4.	System of Record Check - Confirming the driver's license number and date of birth on the driver's license match what is in the AAMVA database"
   };
 
   res.send(`
@@ -353,13 +353,15 @@ app.get('/', (req, res) => {
       <body>
         <div class="content-container">
           <h1>Welcome to the NCDIT Identity Proofing Demonstration</h1>
-          <p>${descriptions.step1}</p>
-          <p>${descriptions.step2}</p>
-          <p><b>${descriptions.step3}</b></p>
-          <p>${descriptions.step4}</p>
-          <p>${descriptions.step5}</p>
-          <p>${descriptions.step6}</p>
-          <p>${descriptions.step7}</p>
+          <p>
+            ${descriptions.step1}<br><br>
+            ${descriptions.step2}<br><br>
+            <b>${descriptions.step3}</b><br><br>
+            ${descriptions.step4}<br>
+            ${descriptions.step5}<br>
+            ${descriptions.step6}<br>
+            ${descriptions.step7}<br>
+          </p>
           
           <a href="/login">
             <button type="submit" class="btn" id="submitBtn">Submit</button>
