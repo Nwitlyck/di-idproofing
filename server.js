@@ -96,10 +96,13 @@ app.get('/callback', async (req, res) => {
         </body>
       </html>
     `);
-  } catch (error) {
-    console.error('Error exchanging authorization code for token:', error.response?.data);
+  } catch (e) {
+
+    const error = req.query.error_description;
     
-    if (error.response?.data?.error_description?.includes("AAMVA")) {
+    console.error("\n"+error);
+    
+    if (error.includes("AAMVA")) {
       res.send(`
         <html>
           <head>
@@ -132,8 +135,8 @@ app.get('/callback', async (req, res) => {
 
               h1 {
                 font-size: 34px;
-                font-weight: 700;
-                color: #e74c3c;
+                font-weight: 700
+                color: #555;
                 margin-bottom: 25px;
                 font-family: 'Poppins', sans-serif;
                 text-align: center;
