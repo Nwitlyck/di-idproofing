@@ -7,10 +7,6 @@ require("dotenv").config({ path: './oauthconfig.env' });
 const app = express();
 const port = 3000;
 
-const agent = new https.Agent({
-  rejectUnauthorized: false
-});
-
 app.use(cors());
 
 const backgroundImage = "images/flag.jpg"
@@ -125,7 +121,7 @@ app.get('/callback', async (req, res) => {
                 text-align: center;
                 color: #222; 
               }
-
+      
               .content-container {
                 background-color: rgba(227, 242, 253, 0.9);
                 padding: 40px;
@@ -134,28 +130,28 @@ app.get('/callback', async (req, res) => {
                 width: 100%;
                 max-width: 520px;
               }
-
+      
               h1 {
                 font-size: 34px;
-                font-weight: 700
-                color: #555;
+                font-weight: 700;
+                color: #2C3E50;
                 margin-bottom: 25px;
                 font-family: 'Poppins', sans-serif;
                 text-align: center;
               }
-
+      
               p {
                 font-size: 18px;
                 color: #555;
                 margin-bottom: 20px;
               }
-
+      
               .error-icon {
                 font-size: 100px;
                 color: #e74c3c;
                 margin-bottom: 20px;
               }
-
+      
               .retry-button {
                 padding: 10px 20px;
                 background-color: #3498db;
@@ -165,7 +161,7 @@ app.get('/callback', async (req, res) => {
                 cursor: pointer;
                 font-size: 16px;
               }
-
+      
               .retry-button:hover {
                 background-color: #2980b9;
               }
@@ -175,7 +171,7 @@ app.get('/callback', async (req, res) => {
             <div class="content-container">
               <h1>Verification of DMV records did not pass</h1>
               <p>Please return to the home page.</p>
-              <button class="retry-button" onclick="window.location.reload();">Try again</button>
+              <button class="retry-button" onclick="window.location.href='/'">Try again</button>
             </div>
           </body>
         </html>
