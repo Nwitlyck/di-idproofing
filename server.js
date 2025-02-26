@@ -96,7 +96,7 @@ app.get('/callback', async (req, res) => {
     `);
   } catch (e) {
 
-    const error = req.query.error_description;
+    let error = req.query.error_description;
     
     console.error("\n"+error);
     
