@@ -37,8 +37,6 @@ app.get('/callback', async (req, res) => {
       client_secret: client_secret
     }), { httpsAgent: agent });
 
-    const { access_token, id_token, token_type } = response.data;
-
     res.send(`
       <html>
         <head>
@@ -97,8 +95,12 @@ app.get('/callback', async (req, res) => {
   } catch (e) {
 
     let error = req.query.error_description;
+
+    if (typeof error === "undefined"){
+      error = "Not Spected";
+    } 
     
-    console.error("\n"+error);
+    console.error(error);
     
     if (error.includes("AAMVA")) {
       res.send(`
