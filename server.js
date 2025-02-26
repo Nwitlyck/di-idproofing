@@ -13,6 +13,8 @@ const agent = new https.Agent({
 
 app.use(cors());
 
+const backgroundImage = "images/flag.jpg"
+
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
@@ -50,7 +52,7 @@ app.get('/callback', async (req, res) => {
 
             body {
               font-family: 'Roboto', sans-serif;
-              background-image: url('images/flag.jpg');
+              background-image: url(${backgroundImage});
               background-size: cover;
               background-position: center;
               background-attachment: fixed;
@@ -111,7 +113,7 @@ app.get('/callback', async (req, res) => {
             <style>
               body {
                 font-family: 'Roboto', sans-serif;
-                background-image: url('images/flag.jpg');
+                background-image: url(${backgroundImage});
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
@@ -171,14 +173,15 @@ app.get('/callback', async (req, res) => {
           </head>
           <body>
             <div class="content-container">
-              <h1>AMMVA was not pass</h1>
+              <h1>Verification of DMV records did not pass</h1>
               <p>Please return to the home page.</p>
-              <button class="retry-button" onclick="window.location.reload();">Try Again</button>
+              <button class="retry-button" onclick="window.location.reload();">Try again</button>
             </div>
           </body>
         </html>
       `);
-    } else {   
+    } 
+    else {   
       res.send(`
         <html>
           <head>
@@ -187,7 +190,7 @@ app.get('/callback', async (req, res) => {
             <style>
               body {
                 font-family: 'Roboto', sans-serif;
-                background-image: url('images/flag.jpg');
+                background-image: url(${backgroundImage});
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
@@ -266,7 +269,7 @@ app.get('/callback', async (req, res) => {
               <h1>Something went wrong</h1>
               <p>The identity proofing process was not completed successfully.</p>
               <p>Please return to the home page:</p>
-              <a href="/" class="btn">Go to Home</a>
+              <a href="/" class="btn">Go to home</a>
             </div>
           </body>
         </html>
@@ -295,7 +298,7 @@ app.get('/', (req, res) => {
 
           body {
             font-family: 'Roboto', sans-serif;
-            background-image: url('images/flag.jpg');
+            background-image: url(${backgroundImage});
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
