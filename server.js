@@ -282,8 +282,8 @@ app.get('/callback', async (req, res) => {
 
 app.get('/', (req, res) => {
   const descriptions = {
-    step1: "To complete the identity verification process, click 'Submit'.",
-    step2: "This verifies an identity by matching the Driver's License Number and Date of Birth against the American Association of Motor Vehicle Administrators (AAMVA) national database.",
+    step1: "To begin the identity verification process, click 'Submit'.",
+    step2: "This process verifies the user's identity by matching the driver's license number and Date of Birth against the American Association of Motor Vehicle Administrators (AAMVA) national database.",
     step3: "What's happening in the background?",
     step4: "1.	Selfie Liveness - Confirming the user is real and present",
     step5: "2.	Document Authentication - Confirming the driver's license is real and has not been altered in any way",
@@ -319,7 +319,7 @@ app.get('/', (req, res) => {
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 520px;
+            max-width: 73%;
           }
 
           h1 {
